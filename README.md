@@ -1,2 +1,2 @@
 # CODSOFT
-Projects for the Completion of Internship.
+Projects given by the platform to Complete the Internship .
