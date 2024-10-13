@@ -1,0 +1,102 @@
+# Initialize an empty dictionary to store contacts
+contacts = {}
+
+# Function to add a new contact
+def add_contact():
+    name = input("Enter store name: ")
+    phone = input("Enter phone number: ")
+    email = input("Enter email: ")
+    address = input("Enter address: ")
+    
+    # Store the contact details in the dictionary using name as the key
+    contacts[name] = {
+        'phone': phone,
+        'email': email,
+        'address': address
+    }
+    print(f"\nContact for {name} added successfully!\n")
+
+# Function to view all contacts
+def view_contacts():
+    if not contacts:
+        print("\nNo contacts available.\n")
+    else:
+        print("\nList of Contacts:\n")
+        for name, details in contacts.items():
+            print(f"Store Name: {name}, Phone: {details['phone']}")
+        print("\n")
+
+# Function to search for a contact by name or phone number
+def search_contact():
+    search_term = input("Enter store name or phone number to search: ")
+    
+    found = False
+    for name, details in contacts.items():
+        if search_term == name or search_term == details['phone']:
+            print(f"\nContact Found:\nStore Name: {name}\nPhone: {details['phone']}\nEmail: {details['email']}\nAddress: {details['address']}\n")
+            found = True
+            break
+
+    if not found:
+        print("\nContact not found.\n")
+
+# Function to update a contact
+def update_contact():
+    name = input("Enter store name of the contact to update: ")
+    
+    if name in contacts:
+        print(f"\nUpdating contact for {name}...")
+        phone = input("Enter new phone number: ")
+        email = input("Enter new email: ")
+        address = input("Enter new address: ")
+        
+        # Update the contact details
+        contacts[name] = {
+            'phone': phone,
+            'email': email,
+            'address': address
+        }
+        print(f"\nContact for {name} updated successfully!\n")
+    else:
+        print("\nContact not found.\n")
+
+# Function to delete a contact
+def delete_contact():
+    name = input("Enter store name of the contact to delete: ")
+    
+    if name in contacts:
+        del contacts[name]
+        print(f"\nContact for {name} deleted successfully!\n")
+    else:
+        print("\nContact not found.\n")
+
+# Function to display the menu
+def menu():
+    print("\n--- Contact Setting Manual ---")
+    print("1. Add Contact")
+    print("2. View Contacts")
+    print("3. Search Contact")
+    print("4. Update Contact")
+    print("5. Delete Contact")
+    print("6. Close")
+    return input("\nChoose an option: ")
+
+# Main program loop
+while True:
+    choice = menu()
+    
+    if choice == '1':
+        add_contact()
+    elif choice == '2':
+        view_contacts()
+    elif choice == '3':
+        search_contact()
+    elif choice == '4':
+        update_contact()
+    elif choice == '5':
+        delete_contact()
+    elif choice == '6':
+        print("\nClosing the field.")
+        break
+    else:
+        print("\nInvalid option. Please try again.\n")
